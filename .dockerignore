@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+**/node_modules
+.pnpm-store
+
+# Build artifacts
+dist
+**/dist
+core/dist-*
+core/dist-nest
+web/stats.html
+coverage
+
+# Runtime data
+data
+core/data
+backup
+
+# VCS & dev files
+.git
+.github
+.vscode
+.idea
+
+# Env & logs
+.env
+.env.*
+*.local
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
