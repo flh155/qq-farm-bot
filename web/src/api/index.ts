@@ -36,7 +36,7 @@ function isTokenExpired(): boolean {
 // 自动刷新 token
 async function refreshToken(): Promise<boolean> {
   const tokenData = tokenRef.value
-  if (!needsTokenRefresh() || !tokenData.token) return true
+  if (!needsTokenRefresh() || !tokenData || !tokenData.token) return false
   
   try {
     const response = await axios.post('/api/token/refresh', null, {
@@ -98,7 +98,7 @@ const api = axios.create({
 
 api.interceptors.request.use((config) => {
   const tokenData = tokenRef.value
-  const token = tokenData?.token
+  const token = tokenData && tokenData.token ? tokenData.token : ''
   if (token) {
     config.headers['x-admin-token'] = token
     
